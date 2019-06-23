@@ -1,0 +1,32 @@
+﻿/* Test comment */
+// standard CSS reset styles
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
+
+
+
+// Include the partials
+@import "partials/_variables.scss";
+@import "partials/_shared.scss";
+@import "partials/_nav.scss";
+@import "partials/_layout.scss";
+@import "partials/_typography.scss";
+
+html, body{
+    font-family:$font-family-site;
+    @extend %fluid-type;
+}
+
+// Use the menu mixin
+@include menu(menu, main-menu, inline-block, calculate-rem(10px), $menu-colours);
+
+@include grid($grid-size-1, $grid-breakpoint-1, $grid-gutter, true);
+@include grid($grid-size-2, $grid-breakpoint-2, $grid-gutter, false);
+@include grid($grid-size-3, $grid-breakpoint-3, $grid-gutter, false);
+@include grid($grid-size-4, $grid-breakpoint-4, $grid-gutter, false);
+
+@include responsive-column-offsetting();
+

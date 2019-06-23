@@ -1,0 +1,34 @@
+﻿// calculates the relative font-size to the body font-size
+@function calculate-rem($size) {
+    $rem-size: $size / $font-root-size;
+
+    @return $rem-size * 1rem;
+}
+
+// https://css-tricks.com/snippets/sass/strip-unit-function/
+// calculates the relative font size in relation to the body font-size
+@function calculate-rem($size) {
+    // divide the size by the root (body) font size to get the relative size
+    $rem-size: $size / $font-root-size;
+
+    // You have to multiply by 1rem to convert it to the right unit, in this case rem
+    @return $rem-size * 1rem;
+}
+
+// https://css-tricks.com/snippets/sass/strip-unit-function/
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+// https: //css-tricks.com/snippets/sass/deep-getset-maps/
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+
+    @return $map;
+}
